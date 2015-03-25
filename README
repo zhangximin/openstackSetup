@@ -1,1 +1,22 @@
 # openstackSetup
+
+Scripts for setup an openstack cluster.
+=================================================
+
+This project only support ubuntu,others will come NOT soon.
+
+Resources
+---------
+http://www.openstack.org/
+
+OpenStack Installation Guide for Ubuntu 14.04
+http://docs.openstack.org/juno/install-guide/install/apt/content/
+
+OpenStack Installation Guide for Red Hat Enterprise Linux 7, CentOS 7, and Fedora 20
+http://docs.openstack.org/juno/install-guide/install/yum/content/
+
+OpenStack Installation Guide for openSUSE 13.1 and SUSE Linux Enterprise Server 11 SP3
+http://docs.openstack.org/juno/install-guide/install/zypper/content/
+
+DevStack - an OpenStack Community Production
+http://docs.openstack.org/developer/devstack/
