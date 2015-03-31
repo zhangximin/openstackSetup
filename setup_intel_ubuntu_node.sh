@@ -1,23 +1,25 @@
+#!/bin/bash
 
+sudo apt-get install -y git sudo
 
-apt-get install -y git sudo
+sudo -u root sh -c "echo \"simon ALL=(ALL) NOPASSWD: ALL\" >> /etc/sudoers"
 
-groupadd stack
+sudo groupadd stack
 
-useradd -g stack -s /bin/bash -d /opt/stack -m stack
+sudo useradd -g stack -s /bin/bash -d /opt/stack -m stack
 
-sudo echo "stack ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+sudo -u root sh -c "echo \"stack ALL=(ALL) NOPASSWD: ALL\" >> /etc/sudoers"
 
-mkdir ~/.ssh; chmod 700 ~/.ssh
+sudo mkdir -p /opt/stack/.ssh
 
-cp ./authorized_keys ~/.ssh
+sudo cp ./authorized_keys /opt/stack/.ssh/
 
-git clone https://git.openstack.org/openstack-dev/devstack
+sudo -u stack sh -c "git clone https://git.openstack.org/openstack-dev/devstack /opt/stack/devstack"
 
-cp ./nodes/local.conf ./nodes/local.sh ./devstack
+sudo cp ./nodes/local.conf ./nodes/local.sh /opt/stack/devstack
 
-cd devstack
+sudo chown -R stack.stack /opt/stack/
+sudo -u stack sh -c "chmod -R 700 /opt/stack/.ssh"
 
-./stack.sh
-
+sudo -u stack -H sh -c "cd ~/devstack;./stack.sh"
 
